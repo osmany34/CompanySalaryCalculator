@@ -1,11 +1,12 @@
 import java.time.LocalDate;
-
 public class Employee {
+    // Nitelikler
     String name;
     double salary;
     int workHours;
     int hireYear;
 
+    // Kurucu metot
     public Employee(String name, double salary, int workHours, int hireYear) {
         this.name = name;
         this.salary = salary;
@@ -13,6 +14,7 @@ public class Employee {
         this.hireYear = hireYear;
     }
 
+    // Vergi hesaplama metodu
     public double tax() {
         if (salary < 1000) {
             return 0;
@@ -21,6 +23,7 @@ public class Employee {
         }
     }
 
+    // Bonus hesaplama metodu
     public double bonus() {
         if (workHours > 40) {
             return (workHours - 40) * 30;
@@ -29,6 +32,7 @@ public class Employee {
         }
     }
 
+    // Maaş artışı hesaplama metodu
     public double raiseSalary() {
         LocalDate currentDate = LocalDate.now();
         int currentYear = currentDate.getYear();
@@ -36,6 +40,7 @@ public class Employee {
 
         double raisePercentage;
 
+        // İşe başlama süresine göre maaş artışı belirle
         if (yearsWorked < 10) {
             raisePercentage = 0.05;
         } else if (yearsWorked < 20) {
@@ -50,10 +55,12 @@ public class Employee {
         return raiseAmount;
     }
 
+    // Toplam maaş hesaplama metodu
     public double totalSalary() {
         return salary + bonus() - tax();
     }
 
+    // Çalışan bilgilerini ekrana yazdırma metodu
     public String toString() {
         return "Adı : " + name + "\n" +
                 "Maaşı : " + salary + "\n" +
